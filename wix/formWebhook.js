@@ -4,11 +4,11 @@ import { fetch } from 'wix-fetch';
 function sendData(item) {
 //replace YOURWEBHOOKADDRESS with a webhook address (i.e https://somewebsite.com)
     fetch("YOURWEBHOOKADDRESS", {
-            "method": "post",
-            "headers": {
-                "Content-Type": "application/json"
+            method: 'post',
+            headers: {
+                'Content-Type': "application/json"
             },
-            "body": JSON.stringify(item)
+            body: JSON.stringify(item)
         })
         .then((httpResponse) => {
             if (httpResponse.ok) {
@@ -22,7 +22,7 @@ function sendData(item) {
 }
 
 //replace datasetname with your dataset name, if your dataset is called submissions then you change the function name to submissions_afterInsert
-export function datasetname_afterInsert(item, context) {
+export function datasetname_afterSave(item, context) {
 	sendData(item);
 	return item
 }
